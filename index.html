@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>侧边工具栏</title>
+	<script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div class="toolbar">
+		<div class="toolItem" paneldata="1">
+			用户
+		</div>
+		<div class="toolItem" paneldata="2">
+			笔记
+		</div>
+		<div class="toolItem" paneldata="3">
+			问答
+		</div>
+		<div class="toolItem" paneldata="4">
+			直播
+		</div>
+	</div>
+	<div class="toolPanel">
+		1
+	</div>
+
+	<script type="text/javascript">
+
+		$(".toolItem").each(function() {
+			$(this).click(function(){
+				if ($(this).hasClass('active')) {
+					$(".toolPanel").toggleClass('toolPanelActive');
+				}else{
+					$(".toolItem").removeClass('active');
+					$(this).addClass('active');
+					$(".toolPanel").addClass('toolPanelActive');
+				}
+
+				var num = $(this).attr("paneldata");
+				
+				if (num == 1) {
+					$(".toolPanel").html("1");
+				};
+				if (num == 2) {
+					$(".toolPanel").html("2");
+				};
+				
+			});
+			
+		});
+
+		
+		$("body").click(function(e) {
+			var _con = $(".toolPanel");
+			if (!_con.is(e.target)) {
+			alert("1");
+			};
+		});
+		
+
+		
+		
+		
+	</script>
+</body>
+</html>
